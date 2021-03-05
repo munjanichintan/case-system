@@ -1,0 +1,83 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+{% block body %}
+ <div class="container">
+<table class="table table-light my-4 table table-striped" >
+  <thead >
+    <tbody>
+      <h1 class="text-center my-4 text-danger">CUSTOMER DETAIL</h1>
+     <tr class="table-secondary">
+      <th scope="col">Customer Id</th>
+      <td>{{data.customer_id}}</td>
+    </tr>
+    <tr>
+      <th scope="col">Customer Creation Date</th>
+      <td>{{data.customer_id.creation_date}}</td>
+    </tr>
+      <tr class="table-secondary">
+      <th scope="col">Customer Changed Date</th>
+      <td>{{data.customer_id.changed_date}}</td>
+    </tr>
+      <tr >
+      <th scope="col">Comment</th>
+      <td>{{data.customer_id.comment}}</td>
+    </tr>
+      <tr class="table-secondary">
+      <th scope="col">First Name</th>
+      <td>{{data.customer_id.person_id.first_name}}</td>
+    </tr>
+      <tr >
+      <th scope="col">Last Name</th>
+      <td>{{data.customer_id.person_id.last_name}}</td>
+    </tr>
+      <tr class="table-secondary">
+      <th scope="col">Telephone1</th>
+      <td>{{data.customer_id.person_id.telephone1}}</td>
+    </tr>
+      <tr>
+      <th scope="col">Telephone2</th>
+      <td>{{data.customer_id.person_id.telephone2}}</td>
+    </tr>
+    <tr class="table-secondary">
+      <th scope="col">Email1</th>
+      <td>{{data.customer_id.person_id.email1}}</td>
+    </tr>
+       <tr>
+      <th scope="col">email2</th>
+      <td>{{data.customer_id.person_id.email2}}</td>
+    </tr>
+       <tr class="table-secondary">
+      <th scope="col">Street</th>
+      <td>{{data.customer_id.person_id.street}}</td>
+    </tr>
+       <tr>
+      <th scope="col">Town</th>
+      <td>{{data.customer_id.person_id.town}}</td>
+    </tr>
+       <tr class="table-secondary">
+      <th scope="col">Postalcode</th>
+      <td>{{data.customer_id.person_id.postalcode}}</td>
+    </tr>
+       <tr >
+      <th scope="col">Country</th>
+      <td>{{data.customer_id.person_id.country}}</td>
+    </tr>
+       <tr>
+      <th scope="col">Person Creation Date </th>
+      <td>{{data.customer_id.person_id.creation_date}}</td>
+    </tr>
+       <tr class="table-secondary">
+      <th scope="col">Person changed Date</th>
+      <td>{{data.customer_id.person_id.changed_date}}</td>
+    </tr>
+       <tr>
+      <th scope="col">Agree Condition</th>
+      <td>{{data.customer_id.person_id.agree_condition}}</td>
+    </tr>
+
+  </thead>
+  </tbody>
+</table>
+
+</div>
+{% endblock %}

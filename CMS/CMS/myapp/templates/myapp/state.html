@@ -1,0 +1,28 @@
+{% extends 'users/base.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title %} State {% endblock %}
+</head>
+<body>
+    {% block body %}
+    <div class="container mt-4">
+        <form method="POST"> {% csrf_token %} 
+        <h2>State Form</h2>
+          <div class="form-row my-2">
+              <select name="state_name" id="state_name" class="form-control">
+                  <option value="new">New</option>
+                  <option value="processing">Processing</option>
+                  <option value="waiting">Waiting</option>
+                  <option value="lawsuitfiled">Lawsuit Filed</option>
+                  <option value="won">Won</option>
+                  <option value="inactive">Inactive</option>
+                  <option value="lost">Lost</option>
+              </select>
+          </div>
+          <button type="submit" class="btn btn-primary my-2">Submit</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html> 

@@ -1,0 +1,62 @@
+{% extends 'users/base.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+  {% block title %} Customer {% endblock %}
+</head>
+<body>
+  {% block body %}
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Alert!</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  {% endfor %}   
+  <div class="container mt-4">
+    <form method="POST"> {% csrf_token %} 
+      <h2 class="text-center">Lawyer Form</h2>
+      <form>
+        <div class="form-row my-4 mx-auto">
+         <label for="exampleFormControlSelect1">Person</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         <select class="form-control" id="exampleFormControlSelect1" name="person">
+          <option>Select Person-</option>
+          {% for i in data %}
+          <option>{{i}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="formGroupExampleInput">fees per hour</label>
+
+        <input type="decimal" step="any" placeholder="enter this format 1234.58" class="form-control" id="fees_per_hour" name="fees_per_hour">
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput">fees per service</label>
+        <input type="decimal" step="any" class="form-control" id="fees_per_service" name="fees_per_service" placeholder="enter this format 1234.56">
+
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea class="form-control" id="comment" name="comment" rows="2"></textarea>
+      </div>
+
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+ <!--      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> -->
+
+
+      <button type="submit" class="btn btn-primary my-2">Submit</button>
+    </form>
+  </div>
+  {% endblock %}
+</body>
+</html> 

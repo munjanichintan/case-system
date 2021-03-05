@@ -1,0 +1,66 @@
+{% extends 'users/base.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title %} Case {% endblock %}
+</head>
+<body>
+    {% block body %}
+      <div class="container my-5">
+      <div class="container">
+<table class="table table-light my-4 table table-striped" >
+  <thead class="thead-dark">
+    <tbody>
+      <h1 class="text-center my-4 text-success shadow p-2 mb-5 bg-dark rounded">Total Earnings</h1>
+    <tr class="table-secondary">
+      <th scope="col" class="font-italic">Total Earnings of all cases </th>
+      <td>{{ all_earnings }}€</td>
+    </tr>
+    <tr>
+      <th scope="col" class="font-italic">Total Earnings of all Sports-Bets cases</th>
+      <td>{{ sports_bets }}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Earnings of all Slot-Machine cases</th>
+      <td>{{ Slot_Machine }}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Earnings of all Online-Casino cases
+      </th>
+      <td>{{Online_Casino}}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Earnings of all Won Cases </th>
+      <td>{{ Won }}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Amount Won of all Won Cases</th>
+      <td>{{ Won_case_amount_won }}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Earings of all Lost  Cases </th>
+      <td>{{ Lost }}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Claim Amount of all Filed Lawsuits Cases</th>
+      <td>{{ Claim_Amount }}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Customer Amount Loss of all Processing Cases</th>
+      <td>{{customer_amount_lost}}€</td>
+    </tr>
+      <tr>
+      <th scope="col" class="font-italic">Total Claim Amount of all Processing Cases</th>
+      <td>{{ case_amount_claim }}€</td>
+    </tr>
+  </thead>
+  </tbody>
+</table>
+      </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% endblock %}
+</body>
+</html> 
+

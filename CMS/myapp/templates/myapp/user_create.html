@@ -1,0 +1,39 @@
+{% extends 'users/base.html' %}
+{% block body %}
+<div class="log-in-main">
+    <div class="log-in-inner">
+        <div class="container">
+           <div class="alert alert-primary my-4 text-center h1" role="alert">
+           Create User</div>
+           <!-- <h3 class="text-danger text-center my-4">Create a User</h3> -->
+           <label>
+               <h4 class="my-1 text-danger font-weight-bold">{{ msg }}</h4>
+           </label>
+           <div class="container">
+               <form method="post" enctype="multipart/form-data">
+                <label>User Type</label>
+                {% csrf_token %}
+                <select name="user_type" id="user_type" class="form-control">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+                <br>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">username</label>
+                    <input type="text"  class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">password</label>
+                    <input type="password"  class="form-control" id="password" name="password">
+                </div>
+
+                    <!-- 
+                        <input required placeholder="Con-Password" name="con-password" type="password"> -->
+                        <button type="submit" class="btn">Submit</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %} 

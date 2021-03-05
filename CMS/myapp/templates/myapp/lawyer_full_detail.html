@@ -1,0 +1,40 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+{% block body %}
+<div class="container">
+  <table class="table table-light my-4 table table-striped" >
+    <thead >
+      <tbody>
+        <div class="alert alert-primary my-4 text-center h1" role="alert">
+        Lawyer Detail</div>
+        <!--  <h1 class="text-center my-4 text-danger">Lawyer Detail</h1> -->
+        <tr class="table-secondary">
+          <th scope="col">Lawyer Id</th>
+          <td>{{data.lawyer_id}}</td>
+        </tr>
+
+        <tr>
+          <th scope="col">Lawyer Fees per Hour</th>
+          <td>{{data.lawyer_id.fees_per_hour}}</td>
+        </tr>
+
+        <tr class="table-secondary">
+          <th scope="col">Customer Fees Per Service </th>
+          <td>{{ data.lawyer_id.fees_per_service }}</td>
+        </tr>
+
+        <tr>
+          <th scope="col">Lawyer Creation Date</th>
+          <td>{{ data.lawyer_id.creation_date }}</td>
+        </tr >
+
+        <tr class="table-secondary">
+          <th scope="col">Lawyer Changed Date</th>
+          <td>{{ data.lawyer_id.changed_date }}</td>
+        </tr>
+      </thead>
+    </tbody>
+  </table>
+
+</div>
+{% endblock %}

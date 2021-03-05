@@ -1,0 +1,55 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+{% block body %}
+<div class="container-fluid">
+  <h1 class="my-3 text-center text-danger">Lawyer Details</h1>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">first_name</th>
+        <th scope="col">last_name</th>
+        <th scope="col">telephone1</th>
+        <th scope="col">telephone2</th>
+        <th scope="col">email1</th>
+     
+        <th scope="col">street</th>
+        <th scope="col">town</th>
+        <th scope="col">postalcode</th>
+        <th scope="col">country</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in customer %}
+      {% if forloop.counter0|divisibleby:2 %}
+      <tr>
+        <td>{{ i.person_id.first_name }}</td>
+        <td>{{ i.person_id.last_name }}</td>
+        <td>{{ i.person_id.telephone1 }}</td>
+        <td>{{ i.person_id.telephone2 }}</td>
+        <td>{{ i.person_id.email1 }}</td>
+        <td>{{ i.person_id.street }}</td>
+        <td>{{ i.person_id.town }}</td>
+        <td>{{ i.person_id.postalcode }}</td>
+        <td>{{ i.person_id.country }}</td>
+
+      </tr>
+      {% else %}
+      <tr class="table-secondary">
+
+         <td>{{ i.person_id.first_name }}</td>
+        <td>{{ i.person_id.last_name }}</td>
+        <td>{{ i.person_id.telephone1 }}</td>
+        <td>{{ i.person_id.telephone2 }}</td>
+        <td>{{ i.person_id.email1 }}</td>
+        <td>{{ i.person_id.street }}</td>
+        <td>{{ i.person_id.town }}</td>
+        <td>{{ i.person_id.postalcode }}</td>
+        <td>{{ i.person_id.country }}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}

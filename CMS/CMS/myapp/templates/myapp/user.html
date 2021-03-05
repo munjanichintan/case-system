@@ -1,0 +1,37 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+{% block body %}
+<div class="container">
+  <h1 class="my-3 text-center text-danger">All User </h1>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">user_type</th>
+      <th scope="col">username</th>
+      <th scope="col">creation_date</th>
+      <th scope="col">changed_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in user1 %}
+    {% if forloop.counter0|divisibleby:2 %}
+    <tr>
+      <td>{{ i.user_type }}</td>
+      <td>{{ i.username }}</td>
+      <td>{{ i.creation_date }}</td>
+      <td>{{ i.changed_date }}</td>
+    </tr>
+      {% else %}
+      <tr class="table-secondary">
+      <td>{{ i.user_type }}</td>
+      <td>{{ i.username }}</td>
+      <td>{{ i.creation_date }}</td>
+      <td>{{ i.changed_date }}</td>
+    </tr>
+    {% endif %}
+     {% endfor %}
+    
+  </tbody>
+</table>
+</div>
+{% endblock %}

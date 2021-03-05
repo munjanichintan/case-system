@@ -1,0 +1,48 @@
+{% extends 'users/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title %} Person Detail {% endblock %}
+</head>
+<body>
+	{% block body %}
+	<div class="container">
+		<table class="table table-bordered mt-4">
+			<thead>
+				<tr>
+					<th scope="col">First name</th>
+					<th scope="col">Last Name</th>
+					<th scope="col">Mobile No</th>
+					<th scope="col">Email</th>
+					<th scope="col">Street</th>
+					<th scope="col">Town</th>
+					<th scope="col">Postalcode</th>
+					<th scope="col">Country</th>
+					<th scope="col">Creation Date</th>
+					<th scope="col">Change Date</th>
+					<th scope="col">Change Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for i in person %}
+				<tr>      
+					<td>{{ i.first_name }}</td>
+					<td>{{ i.last_name }}</td>
+					<td>{{ i.telephone1}},{{i.telephone2}}</td>
+					<td>{{ i.email1}},{{i.email2}}</td>
+					<td>{{ i.street}}</td>
+					<td>{{ i.town}}</td>
+					<td>{{ i.postalcode}}</td>
+					<td>{{ i.country}}</td>
+					<td>{{ i.creation_date}}</td>
+					<td>{{ i.changed_date}}</td>
+					<td>{{ i.agree_condition}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="/myapp/person"><button class="btn btn-primary">Insert Person Data</button></a>
+	</div>
+	{% endblock %}
+</body>
+</html>

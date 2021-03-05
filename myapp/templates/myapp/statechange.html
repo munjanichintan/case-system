@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .dot {
+      height: 25px;
+      width: 25px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot1 {
+      height: 25px;
+      width: 25px;
+      background-color: orange;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot2 {
+      height: 25px;
+      width: 25px;
+      background-color: yellow;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot3 {
+      height: 25px;
+      width: 25px;
+      background-color: green;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .dot4 {
+      height: 25px;
+      width: 25px;
+      background-color: black;
+      border-radius: 50%;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  
+  {% for i in state %}
+  <table>
+    
+    {% if i.state_name == "new" %}
+    <tr>
+      <span class="dot"></span>
+    </tr>
+    {% elif i.state_name == "processing" %}
+    <tr>
+      <span class="dot1"></span>
+    </tr>
+    {% elif i.state_name == "waiting" %}
+    <tr>
+      <span class="dot2"></span>
+    </tr>
+    {% elif i.state_name == "lawsuitfiled" %}
+    <tr>
+      <span class="dot3"></span>
+    </tr>
+    {% elif i.state_name == "won" %}
+    <tr>
+      <span class="dot3"></span>
+      <span class="dot3"></span>
+      <span class="dot3"></span>
+    </tr>
+    {% elif i.state_name == "inactive" %}
+    <tr>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </tr>
+    {% elif i.state_name == "lost" %}
+    <tr>
+      <span class="dot4"></span>
+    </tr>
+    {% endif %}
+  </table>
+  {% endfor %}
+</body>
+</html> 

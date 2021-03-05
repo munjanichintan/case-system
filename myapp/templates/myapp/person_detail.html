@@ -1,0 +1,88 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+{% block body %}
+<div class="container-fluid">
+  <div class="alert alert-primary my-4 text-center h1" role="alert">
+  All Persons</div>
+  <!-- <h1 class="my-3 text-center text-danger">All Persons </h1> -->
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">first_name</th>
+        <th scope="col">last_name</th>
+        <th scope="col">telephone1</th>
+
+        <th scope="col">email1</th>
+
+        <th scope="col">street</th>
+        <th scope="col">town</th>
+        <th scope="col">postalcode</th>
+        <th scope="col">country</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in page_obj %}
+      {% if forloop.counter0|divisibleby:2 %}
+      <tr>
+        <td>{{ i.first_name }}</td>
+        <td>{{ i.last_name }}</td>
+        <td>{{ i.telephone1 }}</td>
+
+        <td>{{ i.email1 }}</td>
+        <td>{{ i.street }}</td>
+        <td>{{ i.town }}</td>
+        <td>{{ i.postalcode }}</td>
+        <td>{{ i.country }}</td>
+        <td class="align-middle"><a href="{% url 'person_updateform' person_id=i.person_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% else %}
+      <tr class="table-secondary">
+
+        <td>{{ i.first_name }}</td>
+        <td>{{ i.last_name }}</td>
+        <td>{{ i.telephone1 }}</td>
+
+        <td>{{ i.email1 }}</td>
+
+        <td>{{ i.street }}</td>
+        <td>{{ i.town }}</td>
+        <td>{{ i.postalcode }}</td>
+        <td>{{ i.country }}</td>
+        <td class="align-middle"><a href="{% url 'person_updateform' person_id=i.person_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-sm-1">
+      {% if page_obj.has_previous %}
+      <ul class="pagination inline-block">
+        <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+      </ul>
+      {% endif %}
+    </div>
+
+    <div class="col-sm-1">
+      <ul class="pagination">
+        <li class="page-item"><span class="inline-block page-link text-center align-middle">&nbsp;&nbsp;&nbsp;&nbsp;{{ page_obj.number }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+      </ul>
+    </div>
+
+    <div>
+
+      {% if page_obj.has_next %}
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+  <br>
+  <br>
+
+
+</div>
+{% endblock %}

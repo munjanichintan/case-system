@@ -1,0 +1,225 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+<head>
+  {% block title %} Case {% endblock %}
+  {% block css %} 
+  .dot {
+  height: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot1 {
+height: 25px;
+width: 25px;
+background-color: orange;
+border-radius: 50%;
+display: inline-block;
+}
+.dot2 {
+height: 25px;
+width: 25px;
+background-color: yellow;
+border-radius: 50%;
+display: inline-block;
+}
+.dot3 {
+height: 25px;
+width: 25px;
+background-color: green;
+border-radius: 50%;
+display: inline-block;
+}
+.dot4 {
+height: 25px;
+width: 25px;
+background-color: black;
+border-radius: 50%;
+display: inline-block;
+}
+a:link {
+text-decoration: none;
+color:#008000;
+}
+
+a:visited {
+text-decoration: none;
+color:#008000;
+
+}
+
+a:hover {
+text-decoration: underline;
+color:#008000;
+}
+
+a:active {
+text-decoration: underline;
+color:#008000;
+{% endblock %}
+</head>
+{% block body %}
+<div class="container">
+ <div class="alert alert-primary my-4 text-center h1" role="alert">
+ All Same State</div>
+ <!-- <h1 class="my-3 text-center text-danger">All Same State</h1> -->
+ <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Color</th>
+      <th scope="col">Case Id</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Lawyer</th>
+      <th scope="col">Changed Date</th>
+      <th scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in case_data %}
+    {% if forloop.counter0|divisibleby:2 %}
+    {% if i.state_id.state_name == "new" %}
+    <tr class="table-secondary align-middle">
+      <th scope="row" class="align-middle"><span class="dot"></th>
+        <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+        <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+        <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+        <td class="align-middle">{{i.changed_date }}</a></td>
+        <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% elif i.state_id.state_name == "processing" %}
+      <tr class="table-secondary align-middle">
+        <th scope="row" class="align-middle"><span class="dot1"></span></th>
+        <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+        <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+        <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+        <td class="align-middle">{{i.changed_date }}</a></td>
+        <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% elif i.state_id.state_name == "waiting" %}
+      <tr class="table-secondary align-middle">
+        <th scope="row" class="align-middle"><span class="dot2"></span></th>
+        <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+        <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+        <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+        <td class="align-middle">{{i.changed_date }}</a></td>
+        <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% elif i.state_id.state_name == "lawsuitfiled" %}
+      <tr class="table-secondary align-middle">
+        <th scope="row" class="align-middle"><span class="dot3"></span></th>
+        <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+        <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+        <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+        <td class="align-middle">{{i.changed_date }}</a></td>
+        <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% elif i.state_id.state_name == "won" %}
+      <tr class="table-secondary align-middle">
+        <th scope="row" class="align-middle"><span class="dot3"></span> <span class="dot3"></span>
+          <span class="dot3"></span></th>
+          <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+          <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+          <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+          <td class="align-middle">{{i.changed_date }}</a></td>
+          <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+        </tr>
+        {% elif i.state_id.state_name == "inactive" %}
+        <tr class="table-secondary align-middle">
+          <th scope="row" class="align-middle"><span class="dot"></span> <span class="dot"></span>
+            <span class="dot"></span></th>
+            <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+            <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+            <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+            <td class="align-middle">{{i.changed_date }}</a></td>
+            <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+          </tr>
+          {% elif i.state_id.state_name == "lost" %}
+          <tr class="table-secondary align-middle">
+            <th scope="row" class="align-middle"><span class="dot4"></span></th>
+            <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+            <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+            <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+            <td class="align-middle">{{i.changed_date }}</a></td>
+            <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+          </tr>
+          {% endif %}
+          {% else %}
+          {% if i.state_id.state_name == "new" %}
+          <tr>
+            <th scope="row" class="align-middle"><span class="dot"></th>
+              <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+              <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+              <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+              <td class="align-middle">{{i.changed_date }}</a></td>
+              <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+            </tr>
+            {% elif i.state_id.state_name == "processing" %}
+            <tr>
+              <th scope="row" class="align-middle"><span class="dot1"></span></th>
+              <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+              <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+              <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+              <td class="align-middle">{{i.changed_date }}</a></td>
+              <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+            </tr>
+            {% elif i.state_id.state_name == "waiting" %}
+            <tr>
+              <th scope="row" class="align-middle"><span class="dot2"></span></th>
+              <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+              <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+              <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+              <td class="align-middle">{{i.changed_date }}</a></td>
+              <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+            </tr>
+            {% elif i.state_id.state_name == "lawsuitfiled" %}
+            <tr>
+              <th scope="row" class="align-middle"><span class="dot3"></span></th>
+              <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+              <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+              <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+              <td class="align-middle">{{i.changed_date }}</a></td>
+              <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+            </tr>
+            {% elif i.state_id.state_name == "won" %}
+            <tr>
+              <th scope="row" class="align-middle"><span class="dot3"></span> <span class="dot3"></span>
+                <span class="dot3"></span></th>
+                <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+                <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+                <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+                <td class="align-middle">{{i.changed_date }}</a></td>
+                <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+              </tr>
+              {% elif i.state_id.state_name == "inactive" %}
+              <tr>
+                <th scope="row" class="align-middle"><span class="dot"></span> <span class="dot"></span>
+                  <span class="dot"></span></th>
+                  <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+                  <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+                  <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+                  <td class="align-middle">{{i.changed_date }}</a></td>
+                  <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+                </tr>
+                {% elif i.state_id.state_name == "lost" %}
+                <tr>
+                  <th scope="row" class="align-middle"><span class="dot4"></span></th>
+                  <td class="align-middle"><a href="{% url 'case_full_detail' case_id=i.case_id %}" >{{ i.case_id }}</a></td>
+                  <td class="align-middle"><a href="{% url 'customer_full_detail' case_id=i.case_id   %}" >{{ i.customer_id.person_id.first_name }}</a></td>
+                  <td class="align-middle">{% if i.lawyer_id.person_id.first_name %}<a href="{% url 'lawyer_full_detail' case_id=i.case_id  %}">{{ i.lawyer_id.person_id.first_name }}</a>{%else%}not assigned{% endif %}</td>
+                  <td class="align-middle">{{i.changed_date }}</a></td>
+                  <td class="align-middle"><a href="{% url 'casedetailpageedit' case_id=i.case_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+                </tr>
+                {% endif %}
+
+                {% endif %}
+                {% endfor %}
+
+              </tbody>
+
+
+
+
+            </table>
+          </div>
+          {% endblock %}

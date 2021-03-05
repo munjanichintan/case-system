@@ -1,0 +1,27 @@
+{% extends 'users/base.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title %} Customer {% endblock %}
+</head>
+<body>
+	{% block body %}
+	<div class="container mt-4">
+		<form method="POST"> {% csrf_token %} 
+		<h2>Customer Form</h2>
+		<!-- {% if person_id %}
+		  <div class="form-group">
+		    <label for="comment">id</label>
+		    <input type="text" class="form-control" name="person_id" value="{{person}}">
+		  </div>
+		  {% endif %} -->
+		  <div class="form-group">
+		    <label for="comment">Comment</label>
+		    <textarea class="form-control" id="comment" name="comment" rows="2"></textarea>
+		  </div>
+		  <button type="submit" class="btn btn-primary my-2">Submit</button>
+		</form>
+	</div>
+	{% endblock %}
+</body>
+</html>	

@@ -1,0 +1,68 @@
+{% extends 'users/base.html' %}
+{% block body %}
+<div class="container">
+  <form method="POST"> {% csrf_token %} 
+    <div class="alert alert-primary my-4 text-center h1" role="alert">
+    Person Update Form</div>
+    <!-- <h2 class="my-3 text-center text-danger">Person Update Form</h2> -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="first_name">First Name</label>
+        <input type="text" class="form-control" id="first_name" name="first_name" value="{{person.first_name}}">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control" id="last_name" name="last_name" value="{{person.last_name}}">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="telephone1">Phone No - 1</label>
+        <input type="tel" class="form-control" id="telephone1" name="telephone1"  value="{{person.telephone1}}">
+      </div>
+      
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="email1">E mail - 1</label>
+        <input type="email" class="form-control" id="email1" name="email1" value="{{person.email1}}">
+      </div>
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="street">Street</label>
+        <input type="text" class="form-control" id="street" name="street" value="{{person.street}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="town">Town</label>
+        <input type="text" class="form-control" id="town" name="town"  value="{{person.town}}">
+      </div>
+      <div class="form-group col-md-2">
+        <label for="postalcode">Postal Code</label>
+        <input type="number" class="form-control" id="postalcode" name="postalcode"  value="{{person.postalcode}}">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" class="form-control" id="country" name="country" value="{{person.country}}">
+    </div>
+<!--     <div class="form-group">
+      <label for="exampleFormControlTextarea1">Message</label>
+      <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+    </div> -->
+<!--     <div class="form-row">
+      <label for="agree_condition">Hiermit erkläre ich mich einverstanden, dass meine in das Kontaktformular eingegebenen Daten elektronisch gespeichert und zum Zweck der Kontaktaufnahme verarbeitet und genutzt werden.&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="agree_condition" id="agree_condition" value="True" checked="">
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="agree_condition" id="agree_condition" value="False">
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div> -->
+    <button type="submit" class="btn btn-primary btn-lg btn-block my-3">submit</button>
+  </form>
+</div>
+{% endblock %}

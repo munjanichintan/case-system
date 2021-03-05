@@ -1,0 +1,289 @@
+{% extends 'users/base.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+  {% block title %} Case {% endblock %}
+</head>
+<body>
+  {% block body %}
+<!--   {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+    <strong>Alert!</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}    -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <div class="container">
+    <!-- {{finance.f}} -->
+    <!-- {{case.values}} -->
+
+    <form action="/myapp/case_update/{{case.case_id}}" method="POST"> {% csrf_token %} 
+      <h1 class="my-5 text-center">Case Update Form</h1>
+      <div class="form-row my-2">
+        <div class="form-group col-md-4">
+          <label for="financetype_id">Finance Type</label>
+          <select class="form-control" id="financetype_id" name="financetype_id">
+            {% for i in finance %}
+            <option value="{{i.financetype_id}}"{% if i.financetype_name_en == case.financetype_id.financetype_name_en%} selected {% endif %} >{{i.financetype_name_en}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="country_id">Country Name</label>
+          <select class="form-control" id="country_id" name="country_id">
+            {% for i in country %}
+            <option value="{{i.country_id}}" {% if i.country_name_en == case.country_id.country_name_en %} selected {% endif %}>{{i.country_name_en}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="category_id">Category Name</label>
+          <select class="form-control" id="category_id" name="category_id">
+            {% for i in category %}
+            <option value="{{i.category_id}}" {% if i.category_name_en == case.category_id.category_name_en %} selected {% endif %}>{{i.category_name_en}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-row my-4">
+        <div class="form-group col-md-4">
+          <label for="currency_id">Currency Short</label>
+          <select class="form-control" id="currency_id" name="currency_id">
+            {% for i in currency %}
+            <option value="{{i.currency_id}}" {% if i.currency_short == case.currency_id.currency_short %} selected {% endif %}>{{i.currency_short}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="currency_name">Currency Name</label>
+          <input type="text" class="form-control" id="currency_name" name="currency_name" value="{{case.currency_id.currency_name}}">
+        </div>
+        <div class="form-group col-md-4">
+          <label for="currency_symbol">Currency Symbol</label>
+          <input type="text" class="form-control" id="currency_symbol" name="currency_symbol" value="{{case.currency_id.currency_symbol}}">
+        </div>
+      </div>
+      {% for i in state %}
+      {% if i.state_name == case.state_id.state_name %}
+    <!--   <div class="form-group col-md-12">
+        <input type="text" class="form-control" name="state_name1"  value="{{i.state_name}}" readonly="True">
+      </div> --> <!-- name="current_state">Current State : {{i.state_name}}</label> -->
+      <div class="form-row my-4">
+        <label for="state_name1">State</label>
+        <input type="text" class="form-control" id="state_name1" name="state_name1" value="{{i.state_name}}" readonly="True">
+      </div>
+      {% endif %}
+      {% endfor %}
+      <div class="form-row my-4">
+        <label for="state_id">State Name</label>
+        <select class="form-control" id="state_id" name="state_id" value="{{case.state_name}}">
+   <!--        <option value="new">New</option>
+          <option value="processing">Processing</option>
+          <option value="inactive">Inactive</option>
+          <option value="lost">Lost</option> -->
+          {% if case.state_id.state_name == 'won' or case.state_id.state_name == 'lawsuitfiled' or case.state_id.state_name == 'waiting' %}
+          <option value="select_state" selected>
+            Select State
+          </option>
+          <option value="new">
+            new
+          </option>
+          <option value="processing">
+            processing
+          </option>
+          <option value="inactive">
+            inactive
+          </option>
+          <option value="lost">
+            lost
+          </option>
+          {% else %}
+          {% for i in state %}
+          {% if i.state_name != 'won' and i.state_name != 'lawsuitfiled' and i.state_name != 'waiting' %}
+          <option value="{{i.state_name}}" {% if i.state_name == case.state_id.state_name %} selected {% endif %}>{{i.state_name}}</option>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+        </select>
+      </div>
+      <div class="form-group">
+       <label for="exampleFormControlSelect2">Lawyer List</label>
+       <select multiple class="form-control" id="lawyer_id" name="lawyer_id">
+   <!--       {% for i in lawyer %}
+         <option value="{{ i.lawyer_id }}">{{ i.person_id.first_name }}</option>
+         {% endfor %} -->
+         {% for i in lawyer %}
+         <option value="{{ i.lawyer_id }}"{% if i.person_id.first_name == case.lawyer_id.person_id.first_name %} selected {% endif %} >{{ i.person_id.first_name }}</option>
+         {% endfor %}
+       </select>
+     </div>
+     <div class="form-row my-4">
+      <div class="form-group col-md-4">
+        <label for="customer_amount_lost" >Customer Amount Lost</label>
+        <input type="decimal" step="any" class="form-control" id="customer_amount_lost" name="customer_amount_lost" value="{{case.customer_amount_lost}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="case_amount_claim">Case Amount Claim</label>
+        <input type="decimal" step="any" class="form-control" id="case_amount_claim" name="case_amount_claim" value="{{case.case_amount_claim}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="case_amount_won">Case Amount Won</label>
+        <input type="decimal" step="any" class="form-control" id="case_amount_won" name="case_amount_won" value="{{case.case_amount_won}}">
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <div class="form-group col-md-4">
+        <label for="case_amount_lost">Case Amount Lost</label>
+        <input type="decimal" step="any" class="form-control" id="case_amount_lost" name="case_amount_lost" value="{{case.case_amount_lost}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="lawyer_fees">Lawyer Fees</label>
+        <input type="decimal" step="any" class="form-control" id="lawyer_fees" name="lawyer_fees" value="{{case.lawyer_fees}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="court_fees">Court Fees</label>
+        <input type="decimal" step="any" class="form-control" id="court_fees" name="court_fees" value="{{case.court_fees}}">
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <div class="form-group col-md-4">
+        <label for="other_fees">Other Fees</label>
+        <input type="decimal" step="any" class="form-control" id="other_fees" name="other_fees" value="{{case.other_fees}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="earnings_from_claim">Earning From Claim</label>
+        <input type="decimal" step="any" class="form-control" id="earnings_from_claim" name="earnings_from_claim" value="{{case.earnings_from_claim}}">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="money_earned_netto">Money Earning Natto</label>
+        <input type="decimal" step="any" class="form-control" id="money_earned_netto" name="money_earned_netto" value="{{case.money_earned_netto}}">
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="customer_played_where">Customer Played Where</label>
+      <input type="text" class="form-control" id="customer_played_where" name="customer_played_where" value="{{case.customer_played_where}}">
+    </div>
+    <div class="form-row my-4">
+      <label for="customer_lost_amounttxt">Customer Lost Amount Text</label>
+      <input type="text" class="form-control" id="customer_lost_amounttxt" name="customer_lost_amounttxt" value="{{case.customer_lost_amounttxt}}">
+    </div>
+    <div class="form-row my-4">
+      <label for="customer_message">Customer Message</label>
+      <input type="text" class="form-control" id="customer_message" name="customer_message"
+      value="{{case.customer_message}}">
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea class="form-control" id="comment" name="comment" rows="2">{{case.comment}}</textarea>
+    </div>
+    <div class="form-row my-4">
+      <label for="customer_loss_evidence">Customer Loss Evidence&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="customer_loss_evidence" id="customer_loss_evidence" value="True" {% if case.customer_loss_evidence == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="customer_loss_evidence" id="customer_loss_evidence" value="False" {% if case.customer_loss_evidence == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="customer_signed_contract">Customer Signed Contract&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="customer_signed_contract" id="customer_signed_contract" value="True" {% if case.customer_signed_contract == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="customer_signed_contract" id="customer_signed_contract" value="False" {% if case.customer_signed_contract == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="lawyer_sent_letter_to_vendor">Lawyer Sent Letter To Vendor&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawyer_sent_letter_to_vendor" id="lawyer_sent_letter_to_vendor" value="True" {% if case.lawyer_sent_letter_to_vendor == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawyer_sent_letter_to_vendor" id="lawyer_sent_letter_to_vendor" value="False" {% if case.lawyer_sent_letter_to_vendor == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="fee_paid_to_lawyer">Fees Paid To Lawyer&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="fee_paid_to_lawyer" id="fee_paid_to_lawyer" value="True" {% if case.fee_paid_to_lawyer == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="fee_paid_to_lawyer" id="fee_paid_to_lawyer" value="False" {% if case.fee_paid_to_lawyer == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="lawyer_assigned">Lawyer Assigned&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawyer_assigned" id="lawyer_assigned" value="True" {% if case.lawyer_assigned == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawyer_assigned" id="lawyer_assigned" value="False" {% if case.lawyer_assigned == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="lawsuit_has_been_filed">Lawsuit Has Been Filed&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawsuit_has_been_filed" id="lawsuit_has_been_filed" value="True" {% if case.lawsuit_has_been_filed == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawsuit_has_been_filed" id="lawsuit_has_been_filed" value="False" {% if case.lawsuit_has_been_filed == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="lawsuit_won">Lawsuit Won&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawsuit_won" id="lawsuit_won" value="True" {% if case.lawsuit_won == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="lawsuit_won" id="lawsuit_won" value="False" {% if case.lawsuit_won == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="customer_wants_financing">Customer Wants Financing&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="customer_wants_financing" id="customer_wants_financing" value="True" {% if case.customer_wants_financing == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="customer_wants_financing" id="customer_wants_financing" value="False" {% if case.customer_wants_financing == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <div class="form-row my-4">
+      <label for="is_customer_already">Is Customer Already&nbsp;&nbsp;&nbsp;</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="is_customer_already" id="is_customer_already" value="True" {% if case.is_customer_already == True %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio1">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="is_customer_already" id="is_customer_already" value="False" {% if case.is_customer_already == False %} checked {% endif %}>
+        <label class="form-check-label" for="inlineRadio2">No</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary my-2">Update</button>
+  </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html> 
+

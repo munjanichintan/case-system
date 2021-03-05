@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Sign-In</title>
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'user/assets/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Font Awesome CSS-->
+    <link href="{% static 'user/assets/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="{% static 'user/assets/animate/animate.css' %}" rel="stylesheet">
+    <!-- Mobile Menu Css -->
+    <link href="{% static 'user/assets/css/slicknav.css' %}" rel="stylesheet">
+    <!-- Owl Carousel -->
+    <link href="{% static 'user/assets/owl-carousel/css/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'user/assets/owl-carousel/css/owl.theme.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'user/css/style.css' %}" rel="stylesheet">
+    <!-- Magnific Popup Css -->
+    <link rel="stylesheet" href="{% static 'user/assets/css/popup.css' %}">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'user/images/favicon.ico' %}">
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+</head>
+<body class="login-wrapper register">
+    <div class="cmg">
+        <div class="logo">
+            <div class="col-sm-12">
+                <img src="{% static 'small_logo.jpeg' %}" alt="My image" height="50px" width="100px">
+            </div>
+        </div>
+        <div class="log-in-main">
+            <div class="log-in-inner">
+                <h3 class="text-info">LOGIN</h3>
+                 <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input required autofocus placeholder="Username" name="username" type="text">
+                    <input required placeholder="Password" name="password" type="password">
+                    <button type="submit" class="btn">LOGIN</button>
+                    
+                    <div class="forget-password">
+                        <label>
+                            Don't have account? <a href="/signup">Register</a>
+                        </label>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'user/assets/jquery/jquery-1.12.0.min.js' %}"></script>
+    <script src="{% static 'user/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'user/assets/jquery/plugin.js' %}"></script>
+    <script src="{% static 'user/assets/jquery/plugins.js' %}"></script>
+    <script src="{% static 'user/assets/jquery/popup.js' %}"></script>
+    <script src="{% static 'user/assets/jquery/slider.js' %}"></script>
+    <script src="{% static 'user/assets/owl-carousel/js/owl.carousel.js' %}"></script>
+    <script src="{% static 'user/assets/wow/wow.min.js' %}"></script>
+    <script src="{% static 'user/assets/jquery/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'user/assets/jquery/jquery.magnific-popup.min.html' %}"></script>
+    <script src="{% static 'user/js/custom.js' %}"></script>
+</body>
+</html>

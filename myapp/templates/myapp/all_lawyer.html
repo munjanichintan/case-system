@@ -1,0 +1,100 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+<head>
+ {% block css %} 
+ 
+ a:link {
+ text-decoration: none;
+ color:#008000;
+}
+
+a:visited {
+text-decoration: none;
+color:#008000;
+
+}
+
+a:hover {
+text-decoration: underline;
+color:#008000;
+}
+
+a:active {
+text-decoration: underline;
+color:#008000;
+}
+{% endblock %}
+</head>
+{% block body %}
+<div class="container">
+  <div class="alert alert-primary my-4 text-center h1" role="alert">
+  All Lawyers</div>
+  <!-- <h1 class="my-3 text-center text-danger">All Lawyers </h1> -->
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Lawyer Id</th>
+        <th scope="col">Person Id</th>
+        <th scope="col">Fees Per Hour</th>
+        <th scope="col">Creation Date</th>
+        <th scope="col">Changed Date</th>
+        <th scope="col">Comment</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in page_obj %}
+      {% if forloop.counter0|divisibleby:2 %}
+      <tr>
+        <th scope="row">{{i.lawyer_id}}</th>
+        <td><a href="{% url 'lawyer_full_detail_all' lawyer_id=i.lawyer_id%}">{{ i.person_id }}</a></td>
+        <td>{{ i.fees_per_hour }}</td>
+        <td>{{ i.creation_date }}</td>
+        <td>{{ i.changed_date }}</td>
+        <td>{{ i.comment }}</td>
+        <td><a href="{% url 'lawyer_update' i.lawyer_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% else %}
+      <tr class="table-secondary">
+        <th >{{i.lawyer_id}}</th>
+        <td><a href="{% url 'lawyer_full_detail_all' lawyer_id=i.lawyer_id%}">{{ i.person_id }}</a></td>
+        <td>{{ i.fees_per_hour }}</td>
+        <td>{{ i.creation_date }}</td>
+        <td>{{ i.changed_date }}</td>
+        <td>{{ i.comment }}</td>
+        <td><a href="{% url 'lawyer_update' i.lawyer_id %}"><button class="btn btn-outline-success">Update</button></a></td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+      
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-sm-1">
+      {% if page_obj.has_previous %}
+      <ul class="pagination inline-block">
+        <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+      </ul>
+      {% endif %}
+    </div>
+
+    <div class="col-sm-1">
+      <ul class="pagination">
+        <li class="page-item"><span class="inline-block page-link text-center align-middle">&nbsp;&nbsp;&nbsp;&nbsp;{{ page_obj.number }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+      </ul>
+    </div>
+
+    <div>
+
+      {% if page_obj.has_next %}
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<br>
+<br>
+</div>
+{% endblock %}

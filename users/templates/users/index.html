@@ -1,0 +1,103 @@
+{% extends 'users/base.html'%}
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Lawyer HTML-5 Template</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+
+  <!-- Preloader Start -->
+
+  <!-- Preloader Start -->
+
+  <main>
+    {% block body %}
+    <!-- slider Area Start-->
+    {% if not user.is_authenticated %}
+
+<!--     <img src="{% static 'logo.jpeg' %}" alt="My image" width="100%" height="200px" style="margin-bottom: 65px">   -->
+    <div class="legal-practice-area section-padding my-1">
+      <div class="container">
+        <!--Section Tittle  -->
+        <div class="row ">
+          <div class="col-xl-12">
+            <div class="section-tittle text-center mb-70">
+              <h2>You Are Logged Out</h2>
+            </div>
+          </div>
+        </div>
+        <!-- single items -->
+        <div class="row">
+
+      </div>
+
+    </div>
+    <!-- Legal Practice Area End-->
+
+    <!-- About Law Start-->
+
+
+    <!-- Contact form Start -->
+    <!-- Contact form End -->
+
+    <!-- Recent-case-area Start -->
+
+
+
+    <!-- Want To Work Start -->
+ 
+  </div>
+  <!-- Want To Work End -->
+
+</main>
+
+{% endif %}
+{% endblock %}
+<!-- JS here -->
+<!-- All JS Custom Plugins Link Here here -->
+<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Jquery Mobile Menu -->
+<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}"></script>
+
+<!-- One Page, Animated-HeadLin -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/animated.headline.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+
+<!-- Scrollup, nice-select, sticky -->
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'js/jquery.sticky.js' %}"></script>
+
+<!-- counter , waypoint -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+
+<!-- counter -->
+<script src="{% static 'js/contact.js' %}"></script>
+<script src=".{% static 'js/jquery.form.js' %}"></script>
+<script src=".{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/mail-script.js' %}"></script>
+<script src=".{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+
+<!-- Jquery Plugins, main Jquery -->	
+<script src="{% static 'js/plugins.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

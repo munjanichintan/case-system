@@ -1,0 +1,144 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+{% block body %}
+<div class="container">
+  <table class="table table-light my-4 table table-striped" >
+    <thead >
+      <tbody>
+       <div class="alert alert-primary my-4 text-center h1" role="alert">
+       Case Details</div>
+       <!-- <h1 class="text-center my-4 text-danger">Case Details</h1> -->
+       <tr class="table-secondary">
+        <th scope="col">Case ID</th>
+        <td>{{data.case_id}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Customer Id</th>
+        <td>{{data.customer_id}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Creation Date</th>
+        <td>{{data.creation_date}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Changed Date</th>
+        <td>{{data.changed_date}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Financetype Id</th>
+        <td>{{data.financetype_id}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Country Id</th>
+        <td>{{data.country_id}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Customer Amount Lost</th>
+        <td>{{data.customer_amount_lost}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Currency Id</th>
+        <td>{{data.currency_id}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Case Amount Claim</th>
+        <td>{{data.case_amount_claim}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Case Amount Won</th>
+        <td>{{data.case_amount_won}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Case Amount Lost</th>
+        <td>{{data.case_amount_lost}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Lawyer Fees</th>
+        <td>{{data.lawyer_fees}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Court Fees</th>
+        <td>{{data.court_fees}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Other Fees</th>
+        <td>{{data.other_fees}}</td>
+      </tr>
+      <tr  class="table-secondary">
+        <th scope="col">Earnings From Claim</th>
+        <td>{{data.earnings_from_claim}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Money Earned_Netto</th>
+        <td>{{data.money_earned_netto}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Case Amount Claim</th>
+        <td>{{data.case_amount_claim}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Customer Loss Evidence</th>
+        <td>{{data.customer_loss_evidence}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Customer Signed Contract</th>
+        <td>{{data.customer_signed_contract}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Lawyer Sent Letter To Vendor</th>
+        <td>{{data.lawyer_sent_letter_to_vendor}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Fee Paid_To lawyer</th>
+        <td>{{data.fee_paid_to_lawyer}}</td>
+      </tr>
+      <tr>
+        <th scope="col">State id</th>
+        <td>{{data.state_id}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Lawyer Assigned</th>
+        <td>{{data.lawyer_assigned}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Lawyer Id</th>
+        <td>{{data.lawyer_id}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Lawsuit Has Been Filed</th>
+        <td>{{data.lawsuit_has_been_filed}}</td>
+      </tr>
+      <tr >
+        <th scope="col">Lawsuit Won</th>
+        <td>{{data.lawsuit_won}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Comment</th>
+        <td>{{data.comment}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Customer Wants Financing</th>
+        <td>{{data.customer_wants_financing}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Is_Customer Already</th>
+        <td>{{data.is_customer_already}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Customer Played Where</th>
+        <td>{{data.customer_played_where}}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">Customer Lost Amounttxt</th>
+        <td>{{data.customer_lost_amounttxt}}</td>
+      </tr>
+      <tr >
+        <th scope="col">Customer Message</th>
+        <td>{{data.customer_message}}</td>
+      </tr>
+    </thead>
+  </tbody>
+</table>
+
+</div>
+{% endblock %}

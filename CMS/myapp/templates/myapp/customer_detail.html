@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <title>Hello, world!</title>
+</head>
+<body>
+  <div class="alert alert-primary my-4 text-center h1" role="alert">
+  Customer Data</div>
+  
+  <div class=contdiner>
+    <table class="table table-light my-4">
+      <thead>
+        <tr>
+          <th scope="col">first_name</th>
+          <th scope="col">last_name</th>
+          <th scope="col">telephone1</th>
+          <th scope="col">telephone2</th>
+          <th scope="col">email1</th>
+          <th scope="col">email2</th>
+          <th scope="col">street</th>
+          <th scope="col">town</th>
+          <th scope="col">country</th>
+          <th scope="col">postalcode</th>
+          <th scope="col">creation_date</th>
+          <th scope="col">changed_date</th>
+          <th scope="col">agree_condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data  %}
+        <tr>
+          <th scope="row">1</th>
+          <td>{{i.first_name}}</td>
+          <td>{{i.last_name}}</td>
+          <td>{{i.telephone1}}</td>
+          <td>{{i.telephone2}}</td>
+          <td>{{i.email1}}</td>
+          <td>{{i.email2}}</td>
+          <td>{{i.street}}</td>
+          <td>{{i.town}}</td>
+          <td>{{i.country}}</td>
+          <td>{{i.postalcode}}</td>
+          <td>{{i.creation_date}}</td>
+          <td>{{i.changed_date}}</td>
+          <td>{{i.agree_condition}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

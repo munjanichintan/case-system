@@ -1,0 +1,58 @@
+{% extends 'users/base.html'%}
+<!doctype html>
+{% block body %}
+<div class="container">
+  <table class="table table-light my-4 table table-striped" >
+    <thead >
+      <tbody>
+       <div class="alert alert-primary my-4 text-center h1" role="alert">
+       Lawyer Detail</div>
+       <!-- <h1 class="text-center my-4 text-danger">Lawyer Detail</h1> -->
+       {% for i in lawyer %}
+       <tr class="table-secondary">
+        <th scope="col">first name</th>
+        <td>{{ i.person_id.first_name }}</td>
+      </tr>
+      <tr>
+        <th scope="col">last name</th>
+        <td>{{ i.person_id.last_name }}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">telephone1</th>
+        <td>{{ i.person_id.telephone1 }}</td>
+      </tr>
+      <tr >
+        <th scope="col">telephone2</th>
+        <td>{{ i.person_id.telephone2 }}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">email1</th>
+        <td>{{ i.person_id.email1 }}</td>
+      </tr>
+      <tr >
+        <th scope="col">street</th>
+        <td>{{ i.person_id.street }}</td>
+      </tr>
+      <tr class="table-secondary">
+        <th scope="col">town</th>
+        <td>{{ i.person_id.town }}</td>
+      </tr>
+      <tr>
+       <th scope="col">postalcode</th>
+       <td>{{ i.person_id.postalcode }}</td>
+     </tr>
+     <tr class="table-secondary">
+       <th scope="col">country</th>
+       <td>{{ i.person_id.country }}</td>
+     </tr>
+
+     {% endfor %}
+   </thead>
+ </tbody>
+</table>
+
+</div>
+{% endblock %}
+
+
+
